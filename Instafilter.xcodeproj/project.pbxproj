@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		7BD0FB6C2A594F980024859E /* onChangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD0FB6B2A594F980024859E /* onChangeView.swift */; };
 		7BD0FB722A5961420024859E /* MultipleOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD0FB712A5961420024859E /* MultipleOptions.swift */; };
+		7BD0FB742A59619F0024859E /* CoreImageSwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD0FB732A59619F0024859E /* CoreImageSwiftUI.swift */; };
 		7BE530842A577E86005CF87F /* InstafilterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE530832A577E86005CF87F /* InstafilterApp.swift */; };
 		7BE530862A577E86005CF87F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE530852A577E86005CF87F /* ContentView.swift */; };
 		7BE530882A577E86005CF87F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7BE530872A577E86005CF87F /* Assets.xcassets */; };
@@ -18,6 +19,7 @@
 /* Begin PBXFileReference section */
 		7BD0FB6B2A594F980024859E /* onChangeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = onChangeView.swift; sourceTree = "<group>"; };
 		7BD0FB712A5961420024859E /* MultipleOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleOptions.swift; sourceTree = "<group>"; };
+		7BD0FB732A59619F0024859E /* CoreImageSwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreImageSwiftUI.swift; sourceTree = "<group>"; };
 		7BE530802A577E86005CF87F /* Instafilter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Instafilter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BE530832A577E86005CF87F /* InstafilterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstafilterApp.swift; sourceTree = "<group>"; };
 		7BE530852A577E86005CF87F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -41,6 +43,7 @@
 			children = (
 				7BD0FB6B2A594F980024859E /* onChangeView.swift */,
 				7BD0FB712A5961420024859E /* MultipleOptions.swift */,
+				7BD0FB732A59619F0024859E /* CoreImageSwiftUI.swift */,
 			);
 			path = Introduction;
 			sourceTree = "<group>";
@@ -153,6 +156,7 @@
 			files = (
 				7BD0FB722A5961420024859E /* MultipleOptions.swift in Sources */,
 				7BE530862A577E86005CF87F /* ContentView.swift in Sources */,
+				7BD0FB742A59619F0024859E /* CoreImageSwiftUI.swift in Sources */,
 				7BD0FB6C2A594F980024859E /* onChangeView.swift in Sources */,
 				7BE530842A577E86005CF87F /* InstafilterApp.swift in Sources */,
 			);
