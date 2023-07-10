@@ -21,6 +21,15 @@ struct UIViewControllerSwiftUI: View {
             Button("Select Image") {
                 showingImagePicker = true
             }
+            .buttonIndigoStyle()
+            
+            Button("Save Image") {
+                guard let inputImage = self.inputImage else { return }
+                
+                let imageSaver = ImageSaver()
+                imageSaver.writeToPhotoAlbum(image: inputImage)
+            }
+            .buttonIndigoStyle()
         }
         .sheet(isPresented: $showingImagePicker) {
             ImagePickerIntroduction(image: $inputImage)
@@ -34,6 +43,21 @@ struct UIViewControllerSwiftUI: View {
     }
 }
 
+struct ButtonIndigoStyle: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .foregroundColor(.white)
+            .padding()
+            .background(.indigo)
+            .clipShape(Capsule())
+    }
+}
+
+extension Button {
+    func buttonIndigoStyle() -> some View {
+        modifier(ButtonIndigoStyle())
+    }
+}
 struct UIViewControllerSwiftUI_Previews: PreviewProvider {
     static var previews: some View {
         UIViewControllerSwiftUI()
