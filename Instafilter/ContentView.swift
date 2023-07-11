@@ -35,6 +35,7 @@ struct ContentView: View {
                 ZStack {
                     Rectangle()
                         .fill(.secondary)
+                        .opacity(image == nil ? 1 : 0)
                     
                     Text("Tap to select a picture")
                         .foregroundColor(.white)
