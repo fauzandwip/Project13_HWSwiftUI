@@ -21,7 +21,7 @@ struct UIViewControllerSwiftUI: View {
             Button("Select Image") {
                 showingImagePicker = true
             }
-            .buttonIndigoStyle()
+            .buttonIndigoStyle(disable: false)
             
             Button("Save Image") {
                 guard let inputImage = self.inputImage else { return }
@@ -29,7 +29,7 @@ struct UIViewControllerSwiftUI: View {
                 let imageSaver = ImageSaver()
                 imageSaver.writeToPhotoAlbum(image: inputImage)
             }
-            .buttonIndigoStyle()
+            .buttonIndigoStyle(disable: false)
         }
         .sheet(isPresented: $showingImagePicker) {
             ImagePickerIntroduction(image: $inputImage)
@@ -44,18 +44,20 @@ struct UIViewControllerSwiftUI: View {
 }
 
 struct ButtonIndigoStyle: ViewModifier {
+    var disable: Bool
+    
     func body(content: Content) -> some View {
         content
-            .foregroundColor(.white)
+            .foregroundColor(disable ? .white.opacity(0.8) : .white)
             .padding()
-            .background(.indigo)
+            .background(disable ? Color.secondary.opacity(0.5) : Color.indigo)
             .clipShape(Capsule())
     }
 }
 
 extension Button {
-    func buttonIndigoStyle() -> some View {
-        modifier(ButtonIndigoStyle())
+    func buttonIndigoStyle(disable: Bool) -> some View {
+        modifier(ButtonIndigoStyle(disable: disable))
     }
 }
 struct UIViewControllerSwiftUI_Previews: PreviewProvider {

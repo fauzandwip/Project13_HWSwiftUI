@@ -11,16 +11,23 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var image: Image?
-    @State private var filterIntensity: Float = 0.5
     
     @State private var showingImagePicker = false
+    @State private var showingFilterSheet = false
     @State private var inputImage: UIImage?
     @State private var processedImage: UIImage?
     
-    @State private var showingFilterSheet = false
     
     @State private var currentFilter: CIFilter = CIFilter.sepiaTone()
+    @State private var filterIntensity: Float = 0.5
+    @State private var filterRadius: Float = 100
+    @State private var filterScale: Float = 5
+    
     let context = CIContext()
+    
+    private var inputKeys: [String] {
+        currentFilter.inputKeys
+    }
     
     var body: some View {
         NavigationView {
@@ -42,18 +49,44 @@ struct ContentView: View {
                     showingImagePicker = true
                 }
                 
-                HStack {
-                    Text("Intensity")
-                    Slider(value: $filterIntensity)
-                        .onChange(of: filterIntensity) { _ in applyProcessing() }
+                // Challenge 2
+                VStack(spacing: 20) {
+                    /// Intensity
+                    if inputKeys.contains(kCIInputIntensityKey) {
+                        HStack {
+                            Text("Intensity")
+                            Slider(value: $filterIntensity, in: 0...1)
+                                .onChange(of: filterIntensity) { _ in applyProcessing() }
+                        }
+                    }
+
+                    /// Radius
+                    if inputKeys.contains(kCIInputRadiusKey) {
+                        HStack {
+                            Text("Radius")
+                            Slider(value: $filterRadius, in: 0...200)
+                                .onChange(of: filterRadius) { _ in applyProcessing() }
+                        }
+                    }
+                    
+                    /// Scale
+                    if inputKeys.contains(kCIInputScaleKey) {
+                        HStack {
+                            Text("Scale")
+                            Slider(value: $filterScale, in: 0...10)
+                                .onChange(of: filterScale) { _ in applyProcessing() }
+                        }
+                    }
                 }
                 .padding(.vertical)
                 
                 HStack {
                     Button("Change Filter") { showingFilterSheet = true }
+                        .buttonIndigoStyle(disable: false)
                     Spacer()
                     Button("Save", action: save)
                     // Challenge 1
+                        .buttonIndigoStyle(disable: image == nil)
                         .disabled(image == nil)
                 }
             }
@@ -101,8 +134,8 @@ struct ContentView: View {
         let inputKeys = currentFilter.inputKeys
         
         if inputKeys.contains(kCIInputIntensityKey) { currentFilter.setValue(filterIntensity, forKey: kCIInputIntensityKey)}
-        if inputKeys.contains(kCIInputRadiusKey) { currentFilter.setValue(filterIntensity * 200, forKey: kCIInputRadiusKey)}
-        if inputKeys.contains(kCIInputScaleKey) { currentFilter.setValue(filterIntensity * 10, forKey: kCIInputScaleKey)}
+        if inputKeys.contains(kCIInputRadiusKey) { currentFilter.setValue(filterRadius, forKey: kCIInputRadiusKey)}
+        if inputKeys.contains(kCIInputScaleKey) { currentFilter.setValue(filterScale, forKey: kCIInputScaleKey)}
         
         guard let outputImage = currentFilter.outputImage else { return }
         
