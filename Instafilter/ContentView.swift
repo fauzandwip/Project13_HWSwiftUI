@@ -15,6 +15,7 @@ struct ContentView: View {
     
     @State private var showingImagePicker = false
     @State private var inputImage: UIImage?
+    @State private var processedImage: UIImage?
     
     @State private var showingFilterSheet = false
     
@@ -49,11 +50,8 @@ struct ContentView: View {
                 .padding(.vertical)
                 
                 HStack {
-                    Button("Change Filter") {
-                        showingFilterSheet = true
-                    }
+                    Button("Change Filter") { showingFilterSheet = true }
                     Spacer()
-                    
                     Button("Save", action: save)
                 }
             }
@@ -86,11 +84,17 @@ struct ContentView: View {
     }
     
     func save() {
+        guard let processedImage = self.processedImage else { return }
         
+        let imageSaver = ImageSaver()
+        imageSaver.successHandler = { print("Success!") }
+        imageSaver.errorHandler = { print("Ooops: \($0.localizedDescription)") }
+        
+        imageSaver.writeToPhotoAlbum(image: processedImage)
     }
     
     func applyProcessing() {
-        guard let inputImage = self.inputImage else { return }
+        guard self.inputImage != nil else { return }
         
         let inputKeys = currentFilter.inputKeys
         
@@ -103,6 +107,7 @@ struct ContentView: View {
         if let cgImg = context.createCGImage(outputImage, from: outputImage.extent) {
             let uiImg = UIImage(cgImage: cgImg)
             image = Image(uiImage: uiImg)
+            processedImage = uiImg
         }
     }
     

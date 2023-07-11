@@ -54,7 +54,6 @@
 				7BD0FB732A59619F0024859E /* CoreImageSwiftUI.swift */,
 				7BD0FB772A59651C0024859E /* ImagePickerIntroduction.swift */,
 				7BD0FB792A5966870024859E /* UIViewControllerSwiftUI.swift */,
-				7B0C4C282A5BEADE009BC802 /* ImageSaver.swift */,
 			);
 			path = Introduction;
 			sourceTree = "<group>";
@@ -81,6 +80,7 @@
 				7BE530832A577E86005CF87F /* InstafilterApp.swift */,
 				7BE530852A577E86005CF87F /* ContentView.swift */,
 				7B0C4C2A2A5BF74C009BC802 /* ImagePicker.swift */,
+				7B0C4C282A5BEADE009BC802 /* ImageSaver.swift */,
 				7BD0FB6A2A594E9C0024859E /* Introduction */,
 				7BE530872A577E86005CF87F /* Assets.xcassets */,
 				7BE530892A577E86005CF87F /* Preview Content */,
