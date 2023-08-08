@@ -40,7 +40,7 @@ struct ContentView: View {
                     Text("Tap to select a picture")
                         .foregroundColor(.white)
                         .font(.headline)
-                        .opacity(image != nil ? 0 : 1)
+                        .opacity(image == nil ? 1 : 0)
                     
                     image?
                         .resizable()
